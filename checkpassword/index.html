@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		body{
+			background-color: #e6dddd;
+		}
+		#signup{
+			width: 400px;
+			height: 600px;
+			background-color: #c2bcbc;
+			margin: auto;
+		}
+		input{
+			width: 300px;
+			height: 20px;
+			margin-left: 45px;
+		}
+		label{
+			font-size: 17pt;
+			color: #837c7c;
+			margin-left: 45px;
+		}
+		#signup_btn{
+			width: 170px;
+			height: 27px;
+			background-color: #adadad;
+			margin-left: 115px;
+		}
+		.p{
+			font-size: 27pt;
+			color:#837c7c;
+			text-align: center;
+			
+		}
+	</style>
+</head>
+<body>
+	<div id="signup"><br>
+		<p class="p">Sing up</p>
+		<br>
+		<form>
+			<label id="l1">Name</label><br>
+			<input id="name" type="text" name="" placeholder="name..."><br><br>
+			<label>Lastname</label><br>
+			<input id="lastname" type="text" name="" placeholder="lastname..."><br><br>
+			<label>Username</label><br>
+			<input id="username" type="text" name=""placeholder="username..."><br><br>
+			<label>Password</label><br>
+			<input id="pass" type="text" name="" placeholder="password"><br><br>
+			<label>Again password</label><br>
+			<input id="confirm_pass" type="password" name="" placeholder="again password"><br><br>
+			<button id="signup_btn" type="submit">Submit</button>
+			<p id="errorText" style="display: none; color: #ff5252;text-align: center;font-size: 12pt;"></p>
+		</form>
+
+	</div>
+	<div id="myData" style="display: none;"></div>
+	
+	<script type="text/javascript">
+		document.getElementById('pass').addEventListener('keyup', function () {
+			event.preventDefault();
+			strongPassword();
+		});
+		function strongPassword() {
+			var i = 0;
+			let password = document.getElementById('pass').value;
+			let errorText = document.getElementById('errorText');
+			if (password.match(/[a-z]+/)) {
+				i +=1;
+			}
+			if (password.match(/[A-Z]+/)) {
+				i +=1;
+			}
+			if (password.match(/[0-9]+/)) {
+				i +=1;
+			}
+			if (password.match(/[@#$&!+()-]+/)) {
+				i +=1;
+			}
+			if (password.length > 6 ) {
+				i +=1;
+			}
+			if (password.length > 7 ) {
+				i +=1;
+			}
+			errorText.style.display = "block";
+			if (i == 0) {
+				errorText.style.color = "red";
+				errorText.textContent = "Parolni to'ldiring!";
+			}else if (i == 1) {
+				errorText.style.color = "red";
+				errorText.textContent = "Parolni eng kamida 6tadan iborat bo'lishi katta kichik harflar va simbollar bo'lsihligi zarur!";
+			}else if (i == 2) {
+				errorText.style.color = "red";
+				errorText.textContent = "Parolni eng kamida 6tadan iborat bo'lishi katta kichik harflar va simbollar bo'lsihligi zarur!";
+			}else if (i == 3) {
+				errorText.style.color = "#9c9e11";
+				errorText.textContent = "Parolni eng kamida 6tadan iborat bo'lishi katta kichik harflar va simbollar bo'lsihligi zarur!";
+			}else if (i > 4) {
+				errorText.style.color = "green";
+				errorText.textContent = "✅Strong password✅";
+			}else if (i > 5) {
+				errorText.style.color = "green";
+				errorText.textContent = "✅Strong password✅";
+			}
+		}
+	</script>
+</body>
+
+</html>
